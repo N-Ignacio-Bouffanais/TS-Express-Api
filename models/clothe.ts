@@ -1,4 +1,6 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
+
+mongoose.set("strictQuery", true);
 
 const ClotheSchema = new Schema({
   name: {
@@ -24,4 +26,5 @@ const ClotheSchema = new Schema({
     required: true,
   },
 });
+
 export default model("Clothe", ClotheSchema);
