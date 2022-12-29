@@ -1,21 +1,31 @@
 import { Router } from "express";
+import Clothe from "../models/clothe";
 
 const router = Router();
 
-router.get("/products", (req,res) => {
-    res.send("Getting all products")
+router.get("/clothes", async (req,res) => {
+  const clothes = await Clothe.find()
+  res.send(clothes)
 })
-router.post("/products", (req, res) => {
-  res.send("Creating a product");
+router.post("/clothes", async (req, res) => {
+  const {name, description, size, price} = req.body
+  const clothe = new Clothe({ name, description, size, price });
+  await clothe.save()
+  res.json(clothe)
 });
-router.get("/products/:id", (req, res) => {
-  res.send("Getting a product");
+router.get("/clothes/:id", async (req, res) => {
+  try {
+    const clothe = await Clothe.findById(req.params.id);
+    res.send(clothe);
+  } catch (error) {
+    console.log(error)
+  }
 });
-router.delete("/products/:id", (req, res) => {
-  res.send("Deleting a product");
+router.delete("/clothes/:id", (req, res) => {
+  res.send("Deleting a clothe");
 });
-router.put("/products/:id", (req, res) => {
-  res.send("Updating a product");
+router.put("/clothes/:id", (req, res) => {
+  res.send("Updating a clothe");
 });
 
 export default router
