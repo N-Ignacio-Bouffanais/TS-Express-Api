@@ -13,6 +13,10 @@ const ClotheSchema = new Schema(
       type: String,
       required: true,
     },
+    brand:{
+      type: String,
+      trim:true,
+    },
     size: {
       type: String,
       required: true,
