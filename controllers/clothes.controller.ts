@@ -28,7 +28,7 @@ export const deleteClothe = async (req:any, res:any) => {
 
       if (!clothe) return res.status(400).json({ message: "Task not found" });
 
-      return res.json(clothe);
+      res.json(clothe);
     } catch (error) {
       return res.status(500).send(error);
     }
