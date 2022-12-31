@@ -5,8 +5,8 @@ export const getElectronics = async (req: any, res: any) => {
   res.send(elect)
 };
 export const createElectronic = async (req: any, res: any) => {
-  const { model_name, price, description, brand } = req.body;
-  const elect = new Electronics({model_name, price, description , brand });
+  const { model_name, price, description, brand, imgURL } = req.body;
+  const elect = new Electronics({model_name, price, description , brand, imgURL });
   await elect.save()
   res.json(elect)
 };

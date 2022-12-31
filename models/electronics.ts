@@ -21,6 +21,10 @@ const ElectroncisSchema = new Schema({
     type: Number,
     required: true,
   },
+  imgURL:{
+    type: String,
+    required: true,
+  }
 },
   {
     versionKey: false,

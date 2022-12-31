@@ -19,6 +19,7 @@ const ClotheSchema = new Schema(
     },
     size: {
       type: String,
+      uppercase: true,
       required: true,
       trim: true,
     },
