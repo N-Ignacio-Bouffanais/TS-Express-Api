@@ -6,17 +6,18 @@ import electronicsRoutes from "./routes/electronics.routes";
 import authRoutes from "./routes/auth.routes";
 import passport from "passport"
 import JWTStrategy from "./middlewares/passport";
-import { initialize } from "passport";
 
 const app = express();
+
+// settings
+app.set('port', process.env.PORT || 3000);
 
 // middlewares
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-app.use(initialize());
-
+app.use(passport.initialize());
 passport.use(JWTStrategy);
 
 //routes
