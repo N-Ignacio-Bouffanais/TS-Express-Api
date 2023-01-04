@@ -21,6 +21,9 @@ app.use(passport.initialize());
 passport.use(JWTStrategy);
 
 //routes
+app.get("/", (req, res) => {
+  return res.send(`The API is at http://localhost:${app.get("port")}`);
+});
 app.use("/api/clothes" , clothesRoutes)
 app.use("/api/electronics", electronicsRoutes)
 app.use("/api/auth", authRoutes)
